@@ -22,7 +22,7 @@ bangumi-search是一款以漫研为目的开发的插件。
 pip install nonebot-plugin-bangumi-search
 ```
 
--然后在bot.py文件中添加
+- 然后在bot.py文件中添加
 
 ```
 nonebot.load_plugin('nonebot-plugin-bangumi-search')
