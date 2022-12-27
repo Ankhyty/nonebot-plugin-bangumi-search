@@ -1,7 +1,6 @@
 from nonebot.plugin import on_command
 from nonebot.adapters.onebot.v11 import Message, MessageEvent, GroupMessageEvent, MessageSegment
 from nonebot.adapters.onebot.v11.helpers import HandleCancellation
-from nonebot.params import State
 from nonebot.typing import T_State
 
 from .database import search_confirm, bgm_screenshoot1, bgm_screenshoot2
@@ -22,7 +21,7 @@ bgm = on_command(
     "search_input", prompt='请输入要搜索的类型编号: \n1.动画 2.现实人物 3.虚拟角色\n4.书籍 5.游戏 6.三次元 0.全部subject', 
     parameterless=[HandleCancellation("已取消")]
 )
-async def get_search_input(event: MessageEvent, state: T_State = State()):
+async def get_search_input(state: T_State):
     search_input_base = str(state["search_input"])
     if search_input_base not in ["0","1","2","3","4","5","6"]:
         await bgm.reject('错误，请重新输入类型编号')
@@ -42,7 +41,7 @@ async def get_search_input(event: MessageEvent, state: T_State = State()):
     "browse_num", prompt="请输入你想访问的条目的数字顺序：",
     parameterless=[HandleCancellation("已取消")]
 )
-async def get_browse_num(state: T_State = State()):
+async def get_browse_num(state: T_State):
     browse_num_base = str(state["browse_num"])
     if browse_num_base not in ["0","1","2","3","4","5","6","7","8","9","10"]:
         await bgm.reject('错误，请重新输入类型编号')
